@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sketch Wire</title>
+  <style>
+    body {
+      background: #0b0b0b;
+      color: #e6e6e6;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      letter-spacing: 0.15em;
+    }
+    .counter {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      opacity: 0.6;
+      letter-spacing: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>THANKS FOR CARRYING THIS FORWARD</div>
+    <div class="counter">
+      viewed <span id="count">—</span> times
+    </div>
+  </div>
+
+  <script>
+    fetch('https://api.countapi.xyz/hit/sketchwire/visits')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('count').innerText = data.value;
+      })
+      .catch(() => {
+        document.getElementById('count').innerText = '?';
+      });
+  </script>
+</body>
+</html>
